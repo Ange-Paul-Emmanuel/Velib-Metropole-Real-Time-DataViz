@@ -1,4 +1,4 @@
-# 🚴‍♂️ Vélib’ Métropole – Real-Time Data Visualization Dashboard (Power BI)
+<img width="1487" height="839" alt="vélibs project" src="https://github.com/user-attachments/assets/01a1fdfb-2fa9-435d-85e5-a9d4069427c3" /># 🚴‍♂️ Vélib’ Métropole – Real-Time Data Visualization Dashboard (Power BI)
 
 ## Contexte du projet
 
@@ -6,7 +6,7 @@ Ce projet a pour objectif de **concevoir un tableau de bord interactif Power BI*
 L’analyse repose sur la **visualisation en temps réel** des **stations de vélos**, de leur **capacité**, et du **taux d’occupation** à travers la métropole parisienne.
 
 L’ensemble des données provient de l’API officielle :
-👉 [https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole](https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole)
+[https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole](https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole)
 
 ---
 
@@ -24,12 +24,12 @@ L’ensemble des données provient de l’API officielle :
 
    ## Visualisations dans Power BI
 
-   
-<img width="1483" height="839" alt="vélibs project" src="https://github.com/user-attachments/assets/69536225-5fdc-481e-ba29-8bd6a8a15025" />
+<img width="1487" height="839" alt="vélibs project" src="https://github.com/user-attachments/assets/cf5296d1-92ad-417d-9703-136e5b74191a" />
+
 
 ### Carte interactive
 - Affiche la **localisation des stations** selon leur **taux d’occupation**.  
-- **Code couleur** : du 🟢 vert (stations avec plus de vélos mécaniques disponibles) au 🔴 rouge (stations avec plus de vélos électriques disponibles).  
+- **Code couleur** : du 🟢 vert (stations avec plus de vélos mécaniques disponibles) au 🔵 bleu (stations avec plus de vélos électriques disponibles).  
 - **Interaction** : clic sur une station → ouverture directe de sa position sur **Google Maps**.  
 
 ---
@@ -41,7 +41,7 @@ L’ensemble des données provient de l’API officielle :
 
 ---
 
-### 📅 Filtres & segments
+### Filtres & segments
 - **nom de station** et **type de vélo**.   
  
 
