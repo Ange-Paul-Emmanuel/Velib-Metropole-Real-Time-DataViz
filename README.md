@@ -1,6 +1,6 @@
 # 🚴‍♂️ Vélib’ Métropole – Real-Time Data Visualization Dashboard (Power BI)
 
-## 🧭 Contexte du projet
+## Contexte du projet
 
 Ce projet a pour objectif de **concevoir un tableau de bord interactif Power BI** à partir des données ouvertes du service **Vélib’ Métropole**.  
 L’analyse repose sur la **visualisation en temps réel** des **stations de vélos**, de leur **capacité**, et du **taux d’occupation** à travers la métropole parisienne.
@@ -10,7 +10,7 @@ L’ensemble des données provient de l’API officielle :
 
 ---
 
-## 🎯 Objectifs du projet
+## Objectifs du projet
 
 - Visualiser la **disponibilité des vélos** et des **bornettes libres** par station.  
 - Calculer le **taux d’occupation** en temps réel.  
@@ -23,9 +23,9 @@ L’ensemble des données provient de l’API officielle :
 
 ---
 
-## ⚙️ Traitements & Transformations (Power Query / M)
+## Traitements & Transformations (Power Query / M)
 
-### 🔹 Étapes principales
+### Étapes principales
 1. **Connexion à l’API Vélib’** et import des fichiers `station_information.json` et `station_status.json`.  
 2. **Fusion des deux tables** via `station_id` pour obtenir un modèle unique.  
 3. **Nettoyage des données** (types, champs inutiles, renommage).  
@@ -37,16 +37,16 @@ L’ensemble des données provient de l’API officielle :
 
 ---
 
-   ## 📈 Visualisations dans Power BI
+   ## Visualisations dans Power BI
 
-### 🌍 Carte interactive
+### Carte interactive
 - Affiche la **localisation des stations** selon leur **taux d’occupation**.  
 - **Code couleur** : du 🟢 vert (stations avec plus de vélos mécaniques disponibles) au 🔴 rouge (stations avec plus de vélos électriques disponibles).  
 - **Interaction** : clic sur une station → ouverture directe de sa position sur **Google Maps**.  
 
 ---
 
-### 📊 Indicateurs clés (KPI)
+### Indicateurs clés (KPI)
 - **Taux d’occupation global et par station**  
 - **Nombre total de vélos**  
 - **Répartition des vélos mécaniques / électriques**   
@@ -59,7 +59,7 @@ L’ensemble des données provient de l’API officielle :
 
 ---
 
-### 💡 Perspectives d’évolution
+### Perspectives d’amélioration
 - **Rafraîchissement automatique** via un **streaming dataset Power BI** pour un suivi en continu.  
 - **Intégration de la météo** pour corréler la disponibilité avec les conditions climatiques.  
 - **Visualisation temporelle** de l’évolution du taux d’occupation (par heure / jour).  
