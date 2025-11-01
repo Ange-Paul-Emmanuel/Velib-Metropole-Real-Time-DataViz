@@ -19,28 +19,7 @@ L’ensemble des données provient de l’API officielle :
 - Intégrer un **lien direct vers Google Maps** pour localiser chaque station.  
 - Expérimenter une approche de **Real-Time Data Visualization** dans Power BI à partir d’une API externe.
 
----
 
-## 🧾 Données utilisées
-
-Les données sont issues du **flux GBFS (General Bikeshare Feed Specification)**, un standard open data des systèmes de vélos partagés.  
-Deux tables principales sont utilisées :
-
-### 1. `station_information.json`
-Contient les **informations statiques** des stations :
-- `station_id` : identifiant unique  
-- `name` : nom de la station  
-- `lat`, `lon` : coordonnées géographiques  
-- `capacity` : capacité totale (nombre d’emplacements)
-
-### 2. `station_status.json`
-Contient les **données dynamiques (temps réel)** :
-- `station_id` : identifiant de la station  
-- `numBikesAvailable` : vélos disponibles  
-- `numDocksAvailable` : bornettes libres  
-- `num_bikes_available_types` : distinction entre vélos mécaniques et électriques  
-- `is_renting`, `is_returning` : statut opérationnel  
-- `last_reported` : date de dernière mise à jour
 
 ---
 
@@ -55,3 +34,34 @@ Contient les **données dynamiques (temps réel)** :
    Lien_Google_Maps =
    "https://www.google.com/maps?q=" &
    'station_information'[lat] & "," & 'station_information'[lon]
+
+---
+
+   ## 📈 Visualisations dans Power BI
+
+### 🌍 Carte interactive
+- Affiche la **localisation des stations** selon leur **taux d’occupation**.  
+- **Code couleur** : du 🟢 vert (stations avec plus de vélos mécaniques disponibles) au 🔴 rouge (stations avec plus de vélos électriques disponibles).  
+- **Interaction** : clic sur une station → ouverture directe de sa position sur **Google Maps**.  
+
+---
+
+### 📊 Indicateurs clés (KPI)
+- **Taux d’occupation global et par station**  
+- **Nombre total de vélos**  
+- **Répartition des vélos mécaniques / électriques**   
+
+---
+
+### 📅 Filtres & segments
+- **nom de station** et **type de vélo**.   
+ 
+
+---
+
+### 💡 Perspectives d’évolution
+- **Rafraîchissement automatique** via un **streaming dataset Power BI** pour un suivi en continu.  
+- **Intégration de la météo** pour corréler la disponibilité avec les conditions climatiques.  
+- **Visualisation temporelle** de l’évolution du taux d’occupation (par heure / jour).  
+- **Déploiement public** du tableau de bord via **Power BI Service.**  
+
