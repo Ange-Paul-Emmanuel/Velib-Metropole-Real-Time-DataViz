@@ -1,4 +1,4 @@
-<img width="1487" height="839" alt="vélibs project" src="https://github.com/user-attachments/assets/01a1fdfb-2fa9-435d-85e5-a9d4069427c3" /># 🚴‍♂️ Vélib’ Métropole – Real-Time Data Visualization Dashboard (Power BI)
+# 🚴‍♂️ Vélib’ Métropole – Real-Time Data Visualization Dashboard (Power BI)
 
 ## Contexte du projet
 
