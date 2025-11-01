@@ -1,49 +1,57 @@
-# 🌿🚲 Visualisation Power BI – Arbres plantés à Paris & Taux d’occupation Vélib’ Métropole
+# 🚴‍♂️ Vélib’ Métropole – Real-Time Data Visualization Dashboard (Power BI)
 
 ## 🧭 Contexte du projet
 
-Ce projet de visualisation a pour objectif de **croiser et analyser deux jeux de données open data parisiens** :  
-1. Les **arbres plantés par projet** dans Paris, disponibles sur [opendata.paris.fr](https://opendata.paris.fr/explore/dataset/arbres-plantes-par-projet/information/).  
-2. Les **stations du service Vélib’ Métropole**, via l’API [Vélib’ Open Data](https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole).  
+Ce projet a pour objectif de **concevoir un tableau de bord interactif Power BI** à partir des données ouvertes du service **Vélib’ Métropole**.  
+L’analyse repose sur la **visualisation en temps réel** des **stations de vélos**, de leur **capacité**, et du **taux d’occupation** à travers la métropole parisienne.
 
-L’objectif global est de **valoriser la donnée urbaine** en combinant des informations **environnementales et de mobilité douce**, grâce à un **tableau de bord interactif Power BI**.
-
----
-
-## 🎯 Objectifs
-
-- Visualiser la **répartition des arbres plantés** à Paris selon les projets, arrondissements et années.  
-- Analyser la **disponibilité et le taux d’occupation** des stations Vélib’ par zone géographique.  
-- Fournir des **indicateurs de performance (KPI)** en temps réel sur la mobilité verte.  
-- Intégrer des **liens géographiques dynamiques** (Google Maps) pour naviguer directement vers les stations et localisations.
+L’ensemble des données provient de l’API officielle :
+👉 [https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole](https://www.velib-metropole.fr/donnees-open-data-gbfs-du-service-velib-metropole)
 
 ---
 
-## 📊 Tableau de bord Power BI
+## 🎯 Objectifs du projet
 
-Le tableau de bord est conçu autour de deux volets :
-
-### 🌳 Volet 1 : Arbres plantés à Paris
-- Nombre total d’arbres plantés par **projet**, **arrondissement**, **année**.  
-- Répartition par **espèce** et **type de plantation**.  
-- Visualisation géographique sur carte (coordonnées GPS).  
-
-### 🚴 Volet 2 : Stations Vélib’ Métropole
-- **Nombre de vélos disponibles**, **bornettes libres** et **taux d’occupation** par station.  
-- Distinction entre **vélos mécaniques et électriques**.  
-- **Carte interactive** des stations avec lien direct vers **Google Maps**.  
-- Analyse de la **capacité totale du réseau** et de la **disponibilité moyenne par zone**.
+- Visualiser la **disponibilité des vélos** et des **bornettes libres** par station.  
+- Calculer le **taux d’occupation** en temps réel.  
+- Distinguer les **vélos mécaniques** et **électriques** disponibles.  
+- Fournir une **expérience interactive** : carte, filtres, indicateurs dynamiques.  
+- Intégrer un **lien direct vers Google Maps** pour localiser chaque station.  
+- Expérimenter une approche de **Real-Time Data Visualization** dans Power BI à partir d’une API externe.
 
 ---
 
-## 🧮 Calculs clés (KPI & DAX)
+## 🧾 Données utilisées
 
-### 🟩 Taux d’occupation Vélib’
-Mesure la part des bornettes actuellement occupées par des vélos :
+Les données sont issues du **flux GBFS (General Bikeshare Feed Specification)**, un standard open data des systèmes de vélos partagés.  
+Deux tables principales sont utilisées :
 
-```DAX
-Taux_occupation (%) =
-DIVIDE(
-    SUM('station_status'[numBikesAvailable]),
-    SUM('station_information'[capacity])
-)
+### 1. `station_information.json`
+Contient les **informations statiques** des stations :
+- `station_id` : identifiant unique  
+- `name` : nom de la station  
+- `lat`, `lon` : coordonnées géographiques  
+- `capacity` : capacité totale (nombre d’emplacements)
+
+### 2. `station_status.json`
+Contient les **données dynamiques (temps réel)** :
+- `station_id` : identifiant de la station  
+- `numBikesAvailable` : vélos disponibles  
+- `numDocksAvailable` : bornettes libres  
+- `num_bikes_available_types` : distinction entre vélos mécaniques et électriques  
+- `is_renting`, `is_returning` : statut opérationnel  
+- `last_reported` : date de dernière mise à jour
+
+---
+
+## ⚙️ Traitements & Transformations (Power Query / M)
+
+### 🔹 Étapes principales
+1. **Connexion à l’API Vélib’** et import des fichiers `station_information.json` et `station_status.json`.  
+2. **Fusion des deux tables** via `station_id` pour obtenir un modèle unique.  
+3. **Nettoyage des données** (types, champs inutiles, renommage).  
+4. **Création d’un lien Google Maps dynamique** :
+   ```DAX
+   Lien_Google_Maps =
+   "https://www.google.com/maps?q=" &
+   'station_information'[lat] & "," & 'station_information'[lon]
