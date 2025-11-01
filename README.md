@@ -20,24 +20,12 @@ L’ensemble des données provient de l’API officielle :
 - Expérimenter une approche de **Real-Time Data Visualization** dans Power BI à partir d’une API externe.
 
 
-
----
-
-## Traitements & Transformations (Power Query / M)
-
-### Étapes principales
-1. **Connexion à l’API Vélib’** et import des fichiers `station_information.json` et `station_status.json`.  
-2. **Fusion des deux tables** via `station_id` pour obtenir un modèle unique.  
-3. **Nettoyage des données** (types, champs inutiles, renommage).  
-4. **Création d’un lien Google Maps dynamique** :
-   ```DAX
-   Lien_Google_Maps =
-   "https://www.google.com/maps?q=" &
-   'station_information'[lat] & "," & 'station_information'[lon]
-
 ---
 
    ## Visualisations dans Power BI
+
+   
+<img width="1483" height="839" alt="vélibs project" src="https://github.com/user-attachments/assets/69536225-5fdc-481e-ba29-8bd6a8a15025" />
 
 ### Carte interactive
 - Affiche la **localisation des stations** selon leur **taux d’occupation**.  
